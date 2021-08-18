@@ -7,10 +7,10 @@ keras_resnet.models._time_distributed_2d
 This module implements popular time distributed two-dimensional residual networks.
 """
 
-import keras.backend
-import keras.layers
-import keras.models
-import keras.regularizers
+import tensorflow.keras.backend
+import tensorflow.keras.layers
+import tensorflow.keras.models
+import tensorflow.keras.regularizers
 
 import keras_resnet.blocks
 import keras_resnet.layers
@@ -57,16 +57,16 @@ def TimeDistributedResNet(inputs, blocks, block, include_top=True, classes=1000,
 
         >>> model.compile("adam", "categorical_crossentropy", ["accuracy"])
     """
-    if keras.backend.image_data_format() == "channels_last":
+    if tensorflow.keras.backend.image_data_format() == "channels_last":
         axis = 3
     else:
         axis = 1
 
-    x = keras.layers.TimeDistributed(keras.layers.ZeroPadding2D(padding=3), name="padding_conv1")(inputs)
-    x = keras.layers.TimeDistributed(keras.layers.Conv2D(64, (7, 7), strides=(2, 2), use_bias=False), name="conv1")(x)
-    x = keras.layers.TimeDistributed(keras_resnet.layers.BatchNormalization(axis=axis, epsilon=1e-5, freeze=freeze_bn), name="bn_conv1")(x)
-    x = keras.layers.TimeDistributed(keras.layers.Activation("relu"), name="conv1_relu")(x)
-    x = keras.layers.TimeDistributed(keras.layers.MaxPooling2D((3, 3), strides=(2, 2), padding="same"), name="pool1")(x)
+    x = tensorflow.keras.layers.TimeDistributed(tensorflow.keras.layers.ZeroPadding2D(padding=3), name="padding_conv1")(inputs)
+    x = tensorflow.keras.layers.TimeDistributed(tensorflow.keras.layers.Conv2D(64, (7, 7), strides=(2, 2), use_bias=False), name="conv1")(x)
+    x = tensorflow.keras.layers.TimeDistributed(keras_resnet.layers.BatchNormalization(axis=axis, epsilon=1e-5, freeze=freeze_bn), name="bn_conv1")(x)
+    x = tensorflow.keras.layers.TimeDistributed(tensorflow.keras.layers.Activation("relu"), name="conv1_relu")(x)
+    x = tensorflow.keras.layers.TimeDistributed(tensorflow.keras.layers.MaxPooling2D((3, 3), strides=(2, 2), padding="same"), name="pool1")(x)
 
     features = 64
 
@@ -82,13 +82,13 @@ def TimeDistributedResNet(inputs, blocks, block, include_top=True, classes=1000,
     if include_top:
         assert classes > 0
 
-        x = keras.layers.TimeDistributed(keras.layers.GlobalAveragePooling2D(), name="pool5")(x)
-        x = keras.layers.TimeDistributed(keras.layers.Dense(classes, activation="softmax"), name="fc1000")(x)
+        x = tensorflow.keras.layers.TimeDistributed(tensorflow.keras.layers.GlobalAveragePooling2D(), name="pool5")(x)
+        x = tensorflow.keras.layers.TimeDistributed(tensorflow.keras.layers.Dense(classes, activation="softmax"), name="fc1000")(x)
 
-        return keras.models.Model(inputs=inputs, outputs=x, *args, **kwargs)
+        return tensorflow.keras.models.Model(inputs=inputs, outputs=x, *args, **kwargs)
     else:
         # Else output each stages features
-        return keras.models.Model(inputs=inputs, outputs=outputs, *args, **kwargs)
+        return tensorflow.keras.models.Model(inputs=inputs, outputs=outputs, *args, **kwargs)
 
 
 def TimeDistributedResNet18(inputs, blocks=None, include_top=True, classes=1000, *args, **kwargs):

@@ -7,15 +7,15 @@ keras_resnet.classifiers
 This module implements popular residual two-dimensional classifiers.
 """
 
-import keras.backend
-import keras.layers
-import keras.models
-import keras.regularizers
+import tensorflow.keras.backend
+import tensorflow.keras.layers
+import tensorflow.keras.models
+import tensorflow.keras.regularizers
 
 import keras_resnet.models
 
 
-class ResNet18(keras.models.Model):
+class ResNet18(tensorflow.keras.models.Model):
     """
     A :class:`ResNet18 <ResNet18>` object.
 
@@ -36,14 +36,14 @@ class ResNet18(keras.models.Model):
     def __init__(self, inputs, classes):
         outputs = keras_resnet.models.ResNet18(inputs)
 
-        outputs = keras.layers.Flatten()(outputs.output)
+        outputs = tensorflow.keras.layers.Flatten()(outputs.output)
 
-        outputs = keras.layers.Dense(classes, activation="softmax")(outputs)
+        outputs = tensorflow.keras.layers.Dense(classes, activation="softmax")(outputs)
 
         super(ResNet18, self).__init__(inputs, outputs)
 
 
-class ResNet34(keras.models.Model):
+class ResNet34(tensorflow.keras.models.Model):
     """
     A :class:`ResNet34 <ResNet34>` object.
 
@@ -64,14 +64,14 @@ class ResNet34(keras.models.Model):
     def __init__(self, inputs, classes):
         outputs = keras_resnet.models.ResNet34(inputs)
 
-        outputs = keras.layers.Flatten()(outputs.output)
+        outputs = tensorflow.keras.layers.Flatten()(outputs.output)
 
-        outputs = keras.layers.Dense(classes, activation="softmax")(outputs)
+        outputs = tensorflow.keras.layers.Dense(classes, activation="softmax")(outputs)
 
         super(ResNet34, self).__init__(inputs, outputs)
 
 
-class ResNet50(keras.models.Model):
+class ResNet50(tensorflow.keras.models.Model):
     """
     A :class:`ResNet50 <ResNet50>` object.
 
@@ -92,14 +92,14 @@ class ResNet50(keras.models.Model):
     def __init__(self, inputs, classes):
         outputs = keras_resnet.models.ResNet50(inputs)
 
-        outputs = keras.layers.Flatten()(outputs.output)
+        outputs = tensorflow.keras.layers.Flatten()(outputs.output)
 
-        outputs = keras.layers.Dense(classes, activation="softmax")(outputs)
+        outputs = tensorflow.keras.layers.Dense(classes, activation="softmax")(outputs)
 
         super(ResNet50, self).__init__(inputs, outputs)
 
 
-class ResNet101(keras.models.Model):
+class ResNet101(tensorflow.keras.models.Model):
     """
     A :class:`ResNet101 <ResNet101>` object.
 
@@ -120,14 +120,14 @@ class ResNet101(keras.models.Model):
     def __init__(self, inputs, classes):
         outputs = keras_resnet.models.ResNet101(inputs)
 
-        outputs = keras.layers.Flatten()(outputs.output)
+        outputs = tensorflow.keras.layers.Flatten()(outputs.output)
 
-        outputs = keras.layers.Dense(classes, activation="softmax")(outputs)
+        outputs = tensorflow.keras.layers.Dense(classes, activation="softmax")(outputs)
 
         super(ResNet101, self).__init__(inputs, outputs)
 
 
-class ResNet152(keras.models.Model):
+class ResNet152(tensorflow.keras.models.Model):
     """
     A :class:`ResNet152 <ResNet152>` object.
 
@@ -149,14 +149,14 @@ class ResNet152(keras.models.Model):
     def __init__(self, inputs, classes):
         outputs = keras_resnet.models.ResNet152(inputs)
 
-        outputs = keras.layers.Flatten()(outputs.output)
+        outputs = tensorflow.keras.layers.Flatten()(outputs.output)
 
-        outputs = keras.layers.Dense(classes, activation="softmax")(outputs)
+        outputs = tensorflow.keras.layers.Dense(classes, activation="softmax")(outputs)
 
         super(ResNet152, self).__init__(inputs, outputs)
 
 
-class ResNet200(keras.models.Model):
+class ResNet200(tensorflow.keras.models.Model):
     """
     A :class:`ResNet200 <ResNet200>` object.
 
@@ -177,8 +177,8 @@ class ResNet200(keras.models.Model):
     def __init__(self, inputs, classes):
         outputs = keras_resnet.models.ResNet200(inputs)
 
-        outputs = keras.layers.Flatten()(outputs.output)
+        outputs = tensorflow.keras.layers.Flatten()(outputs.output)
 
-        outputs = keras.layers.Dense(classes, activation="softmax")(outputs)
+        outputs = tensorflow.keras.layers.Dense(classes, activation="softmax")(outputs)
 
         super(ResNet200, self).__init__(inputs, outputs)

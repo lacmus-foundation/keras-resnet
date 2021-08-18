@@ -30,4 +30,4 @@ def resize(image, output_shape):
 
     are returned.
     """
-    return tensorflow.image.resize_images(image, output_shape)
+    return tensorflow.image.resize(image, output_shape)

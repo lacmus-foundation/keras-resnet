@@ -13,7 +13,7 @@ setuptools.setup(
         ]
     },
     install_requires=[
-        "keras>=2.2.4"
+        "tensorflow>=2.4.2"
     ],
     license="MIT",
     name="keras-resnet",
@@ -29,5 +29,5 @@ setuptools.setup(
         ]
     ),
     url="https://github.com/broadinstitute/keras-resnet",
-    version="0.2.0"
+    version="0.2.1"
 )
